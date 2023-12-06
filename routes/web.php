@@ -19,3 +19,22 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login')->middleware('guest:admin');
+
+Route::post('/admin/login/store', [AuthenticatedSessionController::class, 'store'])->name('admin.login.store');
+
+Route::group(['middleware' => 'admin'], function() {
+
+    Route::get('/admin', [HomeController::class, 'index'])->name('admin.dashboard');
+
+    Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+
+});
