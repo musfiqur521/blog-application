@@ -18,10 +18,7 @@ return [
         'passwords' => 'users',
     ],
 
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +41,11 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
     ],
 
